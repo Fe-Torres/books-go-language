@@ -2,6 +2,7 @@ package routes
 
 import (
 	"crud/controllers"
+	"crud/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,8 +12,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	{
 		books := main.Group("books")
 		{
-			books.GET("/:id", controllers.ShowBook)
-			books.POST("/", controllers.CreateBook)
+			books.GET("/:id", middleware.VerifyToken, controllers.ShowBook)
+			books.POST("/", middleware.VerifyToken, controllers.CreateBook)
 		}
 
 	}
