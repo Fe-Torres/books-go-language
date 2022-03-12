@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"crud/database"
-	"crud/models"
+	"crud/internal/database"
+	"crud/internal/models"
 	"strconv"
 
 	"github.com/gin-gonic/gin"

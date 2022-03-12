@@ -1,7 +1,7 @@
 package migrations
 
 import (
-	"crud/models"
+	"crud/internal/models"
 
 	"gorm.io/gorm"
 )

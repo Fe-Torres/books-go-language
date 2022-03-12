@@ -3,7 +3,7 @@ package server
 //Gin pode ser equiparado ao express
 
 import (
-	routes "crud/server/Routes"
+	routes "crud/internal/server/Routes"
 	"log"
 
 	"github.com/gin-gonic/gin"

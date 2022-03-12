@@ -1,7 +1,7 @@
 package database
 
 import (
-	"crud/database/migrations"
+	"crud/internal/database/migrations"
 	"log"
 	"time"
 
