@@ -2,12 +2,31 @@ package main
 
 import (
 	"crud/internal/database"
-	"crud/internal/server"
+	"crud/proto/grpc_svc"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
 )
 
 func main() {
 	database.StartDB()
-	server := server.NewServer()
+	/*
+		--Without Http--
+		server := server.NewServer()
+		server.Run()
+	*/
+	grpcServer := grpc.NewServer()
+	grpc_svc.RegisterService(*grpcServer)
+	port := ":5000"
 
-	server.Run()
+	listener, err := net.Listen("tcp", port)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err_grpc := grpcServer.Serve(listener)
+	if err_grpc != nil {
+		log.Fatal(err_grpc)
+	}
 }
